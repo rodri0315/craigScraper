@@ -1,0 +1,23 @@
+<h1>Craigslist Listings by Price</h1>
+<div>
+  <table class="center">
+    <tr>
+      <th> Price </th>
+      <th>Number of listings</th>
+    </tr>
+    <tr>
+      <td> $0 - $200 </td>
+      <td><%= @posts_200 %></td>
+    </tr>
+    <% start_price = 201 %>
+    <% limit_price = 400 %>
+     <% @listings_count.each do |num| %>
+        <tr>
+          <td> $<%= start_price.to_s + " - $" + limit_price.to_s %></td>
+          <td><%= num %></td>
+        </tr>
+        <% start_price += 200 %>
+        <% limit_price += 200 %>
+      <% end %>
+  </table>
+</div>
