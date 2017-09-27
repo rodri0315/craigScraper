@@ -1,4 +1,4 @@
-<h1>Craigslist Listings by Price</h1>
+<h1>Craigslist apts/housing listings</h1>
 <div>
   <table class="center">
     <tr>
@@ -6,18 +6,20 @@
       <th>Number of listings</th>
     </tr>
     <tr>
-      <td> $0 - $200 </td>
+      <td> $0 - $200<sup>(1)</sup> </td>
       <td><%= @posts_200 %></td>
     </tr>
-    <% start_price = 201 %>
-    <% limit_price = 400 %>
-     <% @listings_count.each do |num| %>
-        <tr>
-          <td> $<%= start_price.to_s + " - $" + limit_price.to_s %></td>
-          <td><%= num %></td>
-        </tr>
-        <% start_price += 200 %>
-        <% limit_price += 200 %>
-      <% end %>
+
+    <% @apt_price_info.each do |listing| %>
+    <tr>
+      <td> $<%= listing[:price_start] %> - $<%= listing[:limit_price] %></td>
+      <td><%= listing[:count] %></td>
+    </tr>
+    <% end %>
+
   </table>
+  <p>
+    Some apartment listings with the value of $0 might not have a price listed on their ad.<sup>1</sup>
+  </p>
+
 </div>
